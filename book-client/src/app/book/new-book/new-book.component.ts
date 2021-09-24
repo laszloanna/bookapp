@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Book } from 'src/app/interfaces/book.interface';
+import { BookService } from 'src/app/services/book.service';
 
 @Component({
   selector: 'app-new-book',
@@ -12,6 +14,8 @@ export class NewBookComponent implements OnInit {
   genresList: string[];
 
   constructor( public dialogRef: MatDialogRef<NewBookComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:Book,
+    public bookService: BookService,
     ) {
 
     this.bookForm = new FormGroup({
@@ -34,9 +38,9 @@ export class NewBookComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  addNewBook(form: FormGroup){
+  addNewBook(form: FormGroup):void{
     if(form.valid){
-      alert("new book added");
+      this.bookService.addBook(<Book>form.value)
       this.bookForm.reset();
       this.dialogRef.close();
     }

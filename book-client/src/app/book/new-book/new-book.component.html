@@ -1,4 +1,31 @@
- <textarea rows="6"[(ngModel)]="enteredValue"></textarea>
- <hr>
- <button (click)="onClick()">Submit</button>
- <p>{{newPost}}</p>
+<mat-card>
+  <mat-form-field appearance="fill">
+    <label>Book title</label>
+    <input type="text">
+  </mat-form-field>
+  <mat-form-field appearence="outline">
+    <label>Summary</label>
+    <textarea matInput
+    cols="20" rows="10"></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <label>Genre</label>
+    <input type="text">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <label>Length</label>
+    <input type="text">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <label>Country</label>
+    <input type="text">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <label>Link</label>
+    <input type="text">
+  </mat-form-field>
+  <button mat-raised-button
+  color="accent"
+  (Click)="onClick()">Submit</button>
+</mat-card>
+

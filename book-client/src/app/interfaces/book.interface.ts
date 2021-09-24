@@ -1,10 +1,10 @@
 export interface Book{
-  id:string;
+  _id:string;
   title:string;
   author:string;
-  description:string;
-  genre:string[];
+  summary:string;
+  genre:string;
   country:string;
-  length:number;
+  length:string;
   link:string;
 }

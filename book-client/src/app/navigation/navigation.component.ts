@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavItem } from '../interfaces/nav.item.interface';
 
 @Component({
   selector: 'app-navigation',
@@ -7,7 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  navItems: NavItem[];
+
+  constructor() {
+    this.navItems=[
+      { name: "Books", route:"/books"},
+      { name: "My work", route:""},
+      { name: "Favorites", route:""},
+      { name: "To read", route:""},
+      { name: "Profile", route:"/profile"},
+      { name: "Sign out", route:""},
+    ]
+   }
 
   ngOnInit(): void {
   }

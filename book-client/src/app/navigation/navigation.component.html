@@ -1,1 +1,30 @@
-<p>navigation works!</p>
+<!-- <mat-toolbar color="primary">Read Me</mat-toolbar> -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fxHide fxShow.md fxShow.xs fxShow.sm>
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let item of navItems" href="{{item.route}}" >{{item.name}}</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar fxLayout="row" color="primary">
+      <div fxFlex>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        fxHide fxShow.md fxShow.xs fxShow.sm>
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Read Me</span>
+    </div>
+      <mat-list fxLayoutAlign="end center" fxFlex="70" fxHide.md fxHide.xs fxHide.sm>
+        <mat-list-item *ngFor="let item of navItems">
+          <button mat-button routerLink="{{item.route}}">{{item.name}}</button>
+        </mat-list-item>
+      </mat-list>
+    </mat-toolbar>
+    <ng-component></ng-component>
+  </mat-sidenav-content>
+</mat-sidenav-container>

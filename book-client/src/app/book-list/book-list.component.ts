@@ -24,7 +24,7 @@ export class BookListComponent implements OnInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
     public bookService : BookService) {
-      this.books = bookService.getBooks();
+      this.bookService.getBooks();
       this.bookSub = this.bookService.getBookUpdateListener().subscribe((books:Book[])=>{
         this.books = books;
       });

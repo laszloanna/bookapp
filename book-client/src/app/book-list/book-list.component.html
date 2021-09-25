@@ -2,7 +2,7 @@
   <div fxLayout="row wrap" fxLayoutGap="1rem grid">
     <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.md="33%" *ngFor="let book of books">
       <mat-card [routerLink]="['/book/', book._id]">
-        <img mat-card-image src="../../assets/images/book.png">
+        <img mat-card-image [src]='"../../assets/images/" + book.genre + ".png"'>
         <mat-card-content>
           <p>{{book.title}} by {{book.author}}</p>
           <p>{{book.genre}}</p>

@@ -28,8 +28,8 @@ export class NewBookComponent implements OnInit {
     });
 
     this.genresList = [
-      'adventure', 'historical', 'romance', 'fantasy', 'science-fiction', 'young adult',
-      'children\'s book', 'non-fiction', 'thriller', 'horror', 'dystopian'
+      'adventure', 'historical', 'romance', 'fantasy', 'science-fiction', 'young-adult',
+      'childrens', 'non-fiction', 'thriller'
     ];
   }
 

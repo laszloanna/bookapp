@@ -5,30 +5,23 @@ fxLayoutAlign.xs="start stretch" fxLayout.sm="start stretch">
     <mat-card-content>
       <mat-list>
         <mat-list-item>
-          Genre: Fantasy, Romance
+          Genre: {{book?.genre}}
         </mat-list-item>
         <mat-list-item>
-          Country: Sweden
+          Country: {{book?.country}}
         </mat-list-item>
         <mat-list-item>
-          Length: 23 pages
+          Length: {{book?.length}}
         </mat-list-item>
        </mat-list>
     </mat-card-content>
 </mat-card>
 <div class="data">
-    <mat-card-title class="h">Book Title</mat-card-title>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe molestiae dolorum, reprehenderit consectetur omnis quis. Maiores quasi sunt officia saepe nostrum at harum tenetur eaque veniam perspiciatis! Modi accusantium hic eligendi, totam nostrum consequatur neque nisi assumenda iste exercitationem asperiores explicabo aperiam rerum veritatis recusandae odio saepe reprehenderit distinctio numquam voluptates eum, ad porro optio veniam. Quibusdam aspernatur voluptate suscipit aliquid repellendus dolorem, accusantium adipisci dolores, ab, similique expedita. Eos velit eum hic accusantium laboriosam earum nisi, itaque tempora maxime optio sit facilis dolores odio quis suscipit ducimus eligendi porro temporibus officia? Reprehenderit, modi? Eligendi consequatur aperiam cumque voluptas tempora?</p>
-    <p>Read the story: https://archiveofourown.org/users/breathingsarcasm/works</p>
-    <div></div>
-  <mat-list fxLayout="row" fxLayoutAlign="start">
-    <mat-list-item>Romance</mat-list-item>
-    <mat-list-item>Fantasy</mat-list-item>
-    <mat-list-item>LGBTQ+</mat-list-item>
-    <mat-list-item>Young Adult</mat-list-item>
-  </mat-list>
+    <mat-card-title class="h">{{book?.title}}</mat-card-title>
+    <p>{{book?.summary}}</p>
+    <p>Read the story: {{book?.link}}</p>
 </div>
-    <button routerLink="/recipes" mat-mini-fab color="warn" class="del-button" matTooltip="Delete book">
+    <button routerLink="/books" mat-mini-fab color="warn" class="del-button" matTooltip="Delete book" (click)="bookService.deleteBook(book._id)" >
       <span class="material-icons">
         delete_outline
       </span>

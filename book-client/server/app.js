@@ -19,25 +19,29 @@ app.use(bodyParser.json());
 
 app.use((req, res, next)=>{
   res.setHeader("Access-Control-Allow-Origin","*");
-  res.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-Width, Content-Type, Accept");
-  res.setHeader("Access-Control-Allow-Options",
+  res.setHeader("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
+  res.setHeader("Access-Control-Allow-Methods",
   "GET, POST, PATCH, DELETE, OPTIONS");
   next();
 });
 
 
 app.get("/books",(req, res, next)=>{
-  const books = [
-    {_id: 1, title:"Book 1", author:"XY", summary:"this is the first bdummy book on server", genre:"fantasy", country:"Sweden", length:"20 pages", link: "asfffdacsa.com" },
-    {_id: 2, title:"Book 2", author:"XY", summary:"this is the second bdummy book on server", genre:"romance", country:"Japan", length:"24 pages", link: "asdaaacsa.com" },
-    {_id: 3, title:"Book 3", author:"XY", summary:"this is the third bdummy book on server", genre:"thriller", country:"Sweden", length:"10 pages", link: "asdacsaewq.com" },
-    {_id: 4, title:"Book 4", author:"XY=", summary:"this is the fourth bdummy book on server", genre:"young-adult", country:"Hungary", length:"20 pages", link: "asdassdscsa.com" },
-  ];
-  res.status(200).json({
-    message: 'Books fetched succesfully!',
-    books: books
-  });
+  Book.find()
+    .then((documents)=>{
+      res.status(200).json({
+        message: 'Books fetched succesfully!',
+        books: documents
+      });
+    });
 });
+
+app.get("/books/:_id",(req, res, next)=>{
+ Book.findById(req.params._id)
+ .then((document)=>{
+   res.status(200).json(document);
+ });
+})
 
 app.post("/books", (req, res, next)=>{
   const book = new Book({
@@ -48,10 +52,22 @@ app.post("/books", (req, res, next)=>{
     length: req.body.length,
     link: req.body.link
   });
-  book.save();
-  res.status(201).json({
-    message: "post added"
+  book.save().then((createdBook)=>{
+    res.status(201).json({
+      message: "post added",
+      bookId: createdBook._id
+    });
   });
+});
+
+app.delete("/books/:_id",(req, res, next)=>{
+  Book.deleteOne({_id: req.params._id})
+    .then((result)=>{
+      console.log(result);
+      res.status(200).json({
+        message:"Book deleted."
+      });
+    });
 });
 
 module.exports = app;

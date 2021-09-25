@@ -8,8 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 const routes: Routes = [
   {path:"books", component:BookListComponent},
   {path:"profile", component:ProfileComponent},
-  {path:"book/:id", component:BookComponent},
-  {path:"new", component:NewBookComponent} //temp
+  {path:"books/:_id", component:BookComponent},
 ];
 
 @NgModule({

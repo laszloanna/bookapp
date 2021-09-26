@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Book } from '../interfaces/book.interface';
 import {Observable, Subject} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import {environment} from '../../environments/environment';
 
 

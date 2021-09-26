@@ -7,7 +7,7 @@ const { retryWhen } = require("rxjs");
 
 const app = express();
 
-mongoose.connect("mongodb+srv://lana:HBy3-itW7PrLAW-@cluster0.eql0k.mongodb.net/book-app?retryWrites=true&w=majority")
+mongoose.connect("mongodb+srv://lana:" + process.env.MONGO_PWD +"@cluster0.eql0k.mongodb.net/book-app?retryWrites=true&w=majority")
   .then(()=>{
     console.log("Connected to db");
   })

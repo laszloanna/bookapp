@@ -3,10 +3,15 @@ import { Book } from '../interfaces/book.interface';
 import {Observable, Subject} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import {environment} from '../../environments/environment';
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
+
+  private BACKEND_URL = environment.url + '/books/';
 
   private books:Book[] = [];
   private booksUpdated = new Subject<Book[]>();
@@ -18,7 +23,7 @@ export class BookService {
   }
 
   getBooks(){
-    this.http.get<{message:string, books: any}>('http://localhost:3100/books')
+    this.http.get<{message:string, books: any}>(this.BACKEND_URL)
     .subscribe((data)=>{
       this.books = data.books;
       this.booksUpdated.next([...this.books]);
@@ -26,11 +31,11 @@ export class BookService {
   }
 
   getBookById(bookId:string): Observable<Book>{
-    return this.http.get<Book>('http://localhost:3100/books/' + bookId);
+    return this.http.get<Book>(this.BACKEND_URL + bookId);
   }
 
   addBook(book: Book):void{
-    this.http.post<{message:string, bookId:string}>('http://localhost:3100/books', book)
+    this.http.post<{message:string, bookId:string}>(this.BACKEND_URL, book)
     .subscribe((responseData)=>{
       const id = responseData.bookId;
       book._id = id;
@@ -40,14 +45,12 @@ export class BookService {
   }
 
   deleteBook(bookId:string){
-    this.http.delete("http://localhost:3100/books/" + bookId)
+    this.http.delete(this.BACKEND_URL + bookId)
     .subscribe(()=>{
       const updated = this.books.filter(book => book._id !== bookId);
       this.books = updated;
       this.booksUpdated.next([...updated]);
     });
   }
-
-
 
 }

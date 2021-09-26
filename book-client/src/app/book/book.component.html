@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"  fxLayoutAlign="space-evenly stretch"
 fxLayoutAlign.xs="start stretch" fxLayout.sm="start stretch">
   <mat-card class="meta" fxFlex="25" fxFlex.xs="80" fxFlex.sm="80">
-    <img  mat-card-image src="../../assets/images/book.png">
+    <img  mat-card-image [src]='"../../assets/images/"+ book?.genre + ".png"'>
     <mat-card-content>
       <mat-list>
         <mat-list-item>

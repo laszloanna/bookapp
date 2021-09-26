@@ -2,6 +2,7 @@ const express = require("express");
 
 
 const Book = require("../models/book");
+//const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
@@ -22,9 +23,10 @@ router.get("/:_id",(req, res, next)=>{
  });
 })
 
-router.post("", (req, res, next)=>{
+router.post("",  (req, res, next)=>{
   const book = new Book({
     title: req.body.title,
+    author: req.body.author,
     summary: req.body.summary,
     genre: req.body.genre,
     country: req.body.country,
@@ -39,7 +41,7 @@ router.post("", (req, res, next)=>{
   });
 });
 
-router.delete("/:_id",(req, res, next)=>{
+router.delete("/:_id", (req, res, next)=>{
   Book.deleteOne({_id: req.params._id})
     .then((result)=>{
       console.log(result);

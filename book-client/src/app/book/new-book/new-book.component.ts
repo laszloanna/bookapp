@@ -37,26 +37,16 @@ export class NewBookComponent implements OnInit {
       }
     });
 
-    if(this.mode ==="create"){
       this.bookForm = new FormGroup({
         'title': new FormControl(null,{validators:[Validators.required]}),
+        'author': new FormControl(null,{validators:[Validators.required]}),
         'summary': new FormControl(null,{validators:[Validators.required]}),
         'genre': new FormControl(null,{validators:[Validators.required]}),
         'country': new FormControl(null),
         'length': new FormControl(null),
         'link': new FormControl(null)
       });
-    }else{
-      this.bookForm = new FormGroup({
-        'title': new FormControl(this.book.title,{validators:[Validators.required]}),
-        'summary': new FormControl(this.book.summary,{validators:[Validators.required]}),
-        'genre': new FormControl(this.book.genre,{validators:[Validators.required]}),
-        'country': new FormControl(this.book.country),
-        'length': new FormControl(this.book.length),
-        'link': new FormControl(this.book.link)
-      });
 
-    }
 
 
     this.genresList = [

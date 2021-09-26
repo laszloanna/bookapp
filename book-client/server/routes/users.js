@@ -1,7 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
-const bcrpyt = require("bcrypt");
+const bcrpyt = require("bcryptjs");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
@@ -46,7 +46,7 @@ router.post("/login",(req, res, next)=>{
             message:"Auth failed!"
           });
         }
-        const token = jwt.sign({username:fetched.username,email:fetched.email, _id:fetched._id}, process.env.JWT_SECRET, { expiresIn:"1h" }
+        const token = jwt.sign({username:fetched.username, email:fetched.email, _id:fetched._id}, process.env.JWT_SECRET, { expiresIn:"1h" }
         );
         res.status(200).json({
           token:token

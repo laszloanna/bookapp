@@ -1,0 +1,22 @@
+<mat-card>
+  <form mat-dialog-content (submit)="onLogin(loginform)"
+  #loginform="ngForm" >
+    <label>Email</label>
+    <mat-form-field>
+      <input matInput name="email" ngModel type="email"
+      #emailInput="ngModel" autocomplete="off" required email>
+      <mat-error *ngIf="emailInput.invalid">Please enter a valid email address!</mat-error>
+    </mat-form-field>
+    <label>Password</label>
+    <mat-form-field>
+      <input  matInput ngModel name="password" type="password"
+      #passwordInput="ngModel" autocomplete="off" required>
+      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password!</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button
+    color="accent"
+    >LOG IN</button>
+  </form>
+</mat-card>
+

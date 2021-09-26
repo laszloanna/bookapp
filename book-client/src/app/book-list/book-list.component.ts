@@ -12,19 +12,18 @@ import { BookService } from '../services/book.service';
 })
 export class BookListComponent implements OnInit, OnDestroy {
 
-  books: Book[] = [];
+  books: Book[];
   bookSub: Subscription;
 
   constructor(
     public dialog: MatDialog,
-    public bookService : BookService) {
-      this.bookService.getBooks();
-      this.bookSub = this.bookService.getBookUpdateListener().subscribe((books:Book[])=>{
-        this.books = books;
-      });
-    }
+    public bookService : BookService) {}
 
   ngOnInit(): void {
+    this.bookService.getBooks();
+    this.bookSub = this.bookService.getBookUpdateListener().subscribe((books:Book[])=>{
+      this.books = books;
+    });
   }
 
   openAddNewBookDialog(){

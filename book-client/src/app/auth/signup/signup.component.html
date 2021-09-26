@@ -1,0 +1,31 @@
+<mat-card>
+  <form mat-dialog-content (submit)="onSignup(signupform)"
+  #signupform="ngForm" >
+    <label>Username</label>
+    <mat-form-field>
+      <input  matInput name="username" ngModel type="text"
+       #usernameInput="ngModel"  autocomplete="off" required>
+    </mat-form-field>
+    <label>Email</label>
+    <mat-form-field>
+      <input matInput name="email" ngModel type="email"
+      #emailInput="ngModel" autocomplete="off" required email>
+      <mat-error *ngIf="emailInput.invalid">Please enter a valid email address!</mat-error>
+    </mat-form-field>
+    <label>Password</label>
+    <mat-form-field>
+      <input  matInput ngModel name="password" type="password"
+      #passwordInput="ngModel" autocomplete="off" required>
+      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password!</mat-error>
+    </mat-form-field>
+    <label>Introduce yourself</label>
+    <mat-form-field appearance="outline">
+      <textarea matInput ngModel name="bio" rows="7" cols="25" type="text"
+      #bioInput="ngModel" autocomplete="off"></textarea>
+    </mat-form-field>
+    <button mat-raised-button
+    color="accent"
+    >SIGN UP</button>
+  </form>
+</mat-card>
+

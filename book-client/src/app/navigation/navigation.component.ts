@@ -10,18 +10,17 @@ export class NavigationComponent implements OnInit {
 
   navItems: NavItem[];
 
-  constructor() {
-    this.navItems=[
-      { name: "Books", route:"/books"},
-      { name: "My work", route:""},
-      { name: "Favorites", route:""},
-      { name: "To read", route:""},
-      { name: "Profile", route:"/profile"},
-      { name: "Sign out", route:""},
-    ]
-   }
+  constructor() {}
 
   ngOnInit(): void {
+    this.navItems=[
+      { name: "Books", route:""},
+      { name: "My work", route:""},
+      { name: "Profile", route:"/profile"},
+      { name: "Sign up", route:"/signup"},
+      { name: "Log in", route:"/login"},
+      { name: "Log out", route:""}
+    ]
   }
 
 }

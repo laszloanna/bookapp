@@ -30,8 +30,12 @@ export class BookService {
     });
   }
 
-  getBookById(bookId:string): Observable<Book>{
-    return this.http.get<Book>(this.BACKEND_URL + bookId);
+  // getBookById(bookId:string): Observable<Book>{
+  //   return this.http.get<Book>(this.BACKEND_URL + bookId);
+  // }
+
+  getBookById(bookId:string){
+    return {...this.books.find(b => b._id ===bookId)};
   }
 
   addBook(book: Book):void{

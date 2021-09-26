@@ -32,6 +32,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { NewBookComponent } from './book/new-book/new-book.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BookComponent,
     ProfileComponent,
     NewBookComponent,
-    BookListComponent
+    BookListComponent,
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,14 @@
 .del-button {
 	position: fixed;
   right: 2rem;
-	bottom: 2rem;
+	top: 8rem;
 }
 
+.edit-button {
+	position: fixed;
+  right: 2rem;
+	top: 5rem;
+}
 
 
 mat-card-title{
@@ -11,11 +16,7 @@ mat-card-title{
 }
 
 .h{
-  margin: 0 2rem;
-}
-
-.e{
-  margin:2rem 2rem 0;
+  margin: 0 2rem 2rem;
 }
 
 mat-card{
@@ -43,6 +44,9 @@ mat-list-item{
 }
 
 .data{
-  margin:auto;
+  margin-top: 2rem;
+  margin-bottom:auto;
+  margin-left: auto;
+  margin-right: auto;
   max-width:60%;
 }

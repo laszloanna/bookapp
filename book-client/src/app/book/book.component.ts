@@ -15,21 +15,19 @@ export class BookComponent implements OnInit {
 
   constructor(
     public bookService: BookService,
-    private actRoute: ActivatedRoute) {
-      this.bookId="";
-      this.book={} as Book;
-     }
+    private actRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.bookId = this.actRoute.snapshot.params._id;
-
-    this.bookService.getBookById(this.bookId).subscribe((book)=>{
-      this.book=book;
-    });
+    this.book = this.bookService.getBookById(this.bookId);
+    // this.bookService.getBookById(this.bookId).subscribe((book)=>{
+    //   this.book=book;
+    // });
   }
 
   onDelete(bookId:string){
     this.bookService.deleteBook(bookId);
   }
 
+  onEdit(){ }
 }

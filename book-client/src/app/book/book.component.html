@@ -21,9 +21,15 @@ fxLayoutAlign.xs="start stretch" fxLayout.sm="start stretch">
     <p>{{book?.summary}}</p>
     <p>Read the story: {{book?.link}}</p>
 </div>
-    <button routerLink="/books" mat-mini-fab color="warn" class="del-button" matTooltip="Delete book" (click)="bookService.deleteBook(book._id)" >
+    <button routerLink="" mat-mini-fab color="warn" class="del-button" matTooltip="Delete book" (click)="bookService.deleteBook(book._id)" >
       <span class="material-icons">
         delete_outline
+      </span>
+    </button>
+    <button [routerLink] = "['/edit', book._id]" mat-mini-fab color="primary" class="edit-button" matTooltip="Edit book"
+>
+      <span class="material-icons">
+        mode_edit
       </span>
     </button>
 </div>
